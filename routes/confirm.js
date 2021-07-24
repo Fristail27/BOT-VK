@@ -5,6 +5,7 @@ const getMyReputation = require("../tools/Messages/getMyReputation");
 const getTost = require('../tools/Messages/getTost')
 const getOnlineUsers = require('../tools/Messages/getOnlineUsers.js')
 const getCommands = require('../tools/Messages/getCommands.js')
+const notFindCommand = require('../tools/Messages/notFindCommand.js')
 
 
 async function confirm(req, res, next) {
@@ -33,9 +34,11 @@ async function confirm(req, res, next) {
                 getCommands(req)
                 Bot.send200(res);
             } else {
+                if (req.body.object.message.text.toUpperCase().includes("ДЖУСИ")) {
+                    notFindCommand(req)
+                }
                 Bot.send200(res);
             }
-
             break;
         default:
             break;

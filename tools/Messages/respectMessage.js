@@ -13,7 +13,7 @@ const respectMessage = async (req, res) => {
             const userName = `${JSON.parse(response.body).response[0].first_name} ${JSON.parse(response.body).response[0].last_name}`
 
             const reqBodyMes = {
-                message: `👍 ${userName} вам уважительно оказано уважение`,
+                message: `👍 [id${JSON.parse(response.body).response[0].id}|${userName}] вам уважительно оказано уважение`,
                 peer_id: req.body.object.message.peer_id,
                 group_id: req.body.group_id,
                 random_id: req.body.object.message.random_id
