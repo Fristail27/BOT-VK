@@ -1,10 +1,11 @@
 const request = require('request')
+const createQuery = require('./../../services/constants/URLs')
 
 const getOnlineUsers = (req) => {
-    const getUsersInChat =
-        `${process.env.BASE_URL}messages.getConversationMembers?&peer_id=${req.body.object.message.peer_id}&access_token=${process.env.TOKEN}&v=${process.env.VER}`
 
-    request(getUsersInChat, async (err, response, body) => {
+    const respectQuery = createQuery('messages.getConversationMembers', {peer_id: req.body.object.message.peer_id})
+
+    request(respectQuery, async (err, response, body) => {
         if (err) {
             console.log('error', err)
         }
@@ -12,10 +13,16 @@ const getOnlineUsers = (req) => {
             return acc + `\n ${i + 1}: ${el}`
         }, '📜 | Сейчас онлайн: ')
 
-        const answer =
-            `${process.env.BASE_URL}messages.send?message=${encodeURIComponent(answerText)}&peer_id=${req.body.object.message.peer_id}&group_id=${req.body.group_id}&random_id=${req.body.object.message.random_id}&access_token=${process.env.TOKEN}&v=${process.env.VER}`
+        const reqBodyMes = {
+            message: answerText,
+            peer_id: req.body.object.message.peer_id,
+            group_id: req.body.group_id,
+            random_id: req.body.object.message.random_id
+        }
 
-        request(answer, (err, response, body) => {
+        const respectQueryMes = createQuery('messages.send', reqBodyMes)
+
+        request(respectQueryMes, (err, response, body) => {
                 if (err) {
                     console.log('error', err)
                 }
