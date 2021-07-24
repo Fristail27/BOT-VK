@@ -9,8 +9,10 @@ const getOnlineUsers = (req) => {
         if (err) {
             console.log('error', err)
         }
-        const answerText = JSON.parse(response.body).response.profiles.filter(el => el.online === 1).map(el => (`${el.first_name} ${el.last_name}`)).reduce((acc, el, i) => {
-            return acc + `\n ${i + 1}: ${el}`
+        const answerText = JSON.parse(response.body).response.profiles.filter(el => el.online === 1).map(el => (
+            {name:`${el.first_name} ${el.last_name}`,
+                id: el.id})).reduce((acc, el, i) => {
+            return acc + `\n ${i + 1}: [id${el.id}|${el.name}]`
         }, '📜 | Сейчас онлайн: ')
 
         const reqBodyMes = {
