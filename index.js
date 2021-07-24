@@ -2,28 +2,22 @@ const express = require('express')
 const mongoose = require('mongoose')
 const exphbs = require('express-handlebars')
 const mainPage = require('./routes/index')
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const cookieParser = require('cookie-parser');
 require('dotenv').config()
-
 
 const PORT = process.env.PORT || 3000
 
 const app = express()
 
-const hbs = exphbs.create({
-    extname: 'hbs'
-})
+const hbs = exphbs.create({extname: 'hbs'})
 
 app.engine('hbs', hbs.engine)
 app.set('view engine', 'hbs')
 app.set('views', 'views')
 
-app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-
 
 app.use(mainPage)
 

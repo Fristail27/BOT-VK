@@ -1,5 +1,3 @@
-const request = require('request');
-
 class Bot {
     constructor(text) {
         this.text = text;

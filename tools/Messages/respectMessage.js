@@ -1,7 +1,5 @@
 const request = require('request')
-const Bot = require('./../classBot')
 const User = require("../../db/userModel")
-
 
 const respectMessage = async (req, res) => {
     const getUserUrl =
@@ -15,7 +13,6 @@ const respectMessage = async (req, res) => {
             const answer =
                 `${process.env.BASE_URL}messages.send?message=${encodeURIComponent(`👍 ${userName} вам уважительно оказано уважение`)}&peer_id=${req.body.object.message.peer_id}&group_id=${req.body.group_id}&random_id=${req.body.object.message.random_id}&access_token=${process.env.TOKEN}&v=${process.env.VER}`
 
-            // await Bot.send200(response);
             request(answer, async (err, resp, body) => {
                     if (err) {
                         console.log('error', err)
@@ -34,13 +31,10 @@ const respectMessage = async (req, res) => {
                         })
                         await newUser.save()
                     }
-
-                    // await Bot.send200(resp);
                 }
             )
         }
     )
-    // await Bot.send200(res);
 }
 
 module.exports = respectMessage

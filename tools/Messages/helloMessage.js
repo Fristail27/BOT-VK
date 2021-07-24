@@ -1,6 +1,4 @@
 const request = require('request')
-const Bot = require('./../classBot')
-
 
 const helloMessage = async (req, res) => {
     const getUserUrl =
@@ -12,20 +10,16 @@ const helloMessage = async (req, res) => {
             }
             const userName = `${JSON.parse(response.body).response[0].first_name} ${JSON.parse(response.body).response[0].last_name}`
             const answer =
-                `${process.env.BASE_URL}messages.send?message=${encodeURIComponent(`✌️Привет ${userName}`)}&peer_id=${req.body.object.message.peer_id}&group_id=${req.body.group_id}&random_id=${req.body.object.message.random_id}&access_token=${process.env.TOKEN}&v=${process.env.VER}`
-        // await Bot.send200(response);
+                `${process.env.BASE_URL}messages.send?message=${encodeURIComponent(`✌️| Здраздэ ${userName}`)}&peer_id=${req.body.object.message.peer_id}&group_id=${req.body.group_id}&random_id=${req.body.object.message.random_id}&access_token=${process.env.TOKEN}&v=${process.env.VER}`
 
-        request(answer, (err, response, body) => {
+            request(answer, (err, response, body) => {
                     if (err) {
                         console.log('error', err)
                     }
-                    // Bot.send200(response);
                 }
             )
         }
     )
-    // Bot.send200(res);
-
 }
 
 module.exports = helloMessage
