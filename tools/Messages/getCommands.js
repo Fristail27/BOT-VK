@@ -9,7 +9,8 @@ const getCommands = (req) => {
         '\n 👍 | - +' +
         '\n 👏 | - джуси уважение' +
         '\n 🍻 | - джуси тост' +
-        '\n 📱 | - джуси онлайн'
+        '\n 📱 | - джуси онлайн' +
+        '\n 🔪 | - убить'
 
     const reqBody = {
         message: textBody,
