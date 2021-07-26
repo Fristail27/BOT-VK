@@ -21,7 +21,6 @@ const getCommands = async (req) => {
     }
 
     const respectQuery = createQuery('messages.send', reqBody)
-    await axios.get(respectQuery).then((res) => console.log(res.body))
 
     request(respectQuery, async (err, response, body) => {
         if (err) {
