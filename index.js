@@ -3,9 +3,10 @@ const mongoose = require('mongoose')
 const exphbs = require('express-handlebars')
 const mainPage = require('./routes/index')
 const cookieParser = require('cookie-parser');
+const keys = require('./keys/keys')
 require('dotenv').config()
 
-const PORT = process.env.PORT || 3000
+const PORT = keys.PORT || 3000
 
 const app = express()
 
@@ -23,7 +24,7 @@ app.use(mainPage)
 
 async function start () {
     try {
-        await mongoose.connect(`mongodb+srv://Fristail27:${process.env.MONGO_DB_PASSWORD}@cluster0.rkdll.mongodb.net/data`, {
+        await mongoose.connect(`mongodb+srv://Fristail27:${keys.MONGO_DB_PASSWORD}@cluster0.rkdll.mongodb.net/data`, {
             useNewUrlParser: true,
             useFindAndModify: false
         })

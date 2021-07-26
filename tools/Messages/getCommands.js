@@ -1,7 +1,8 @@
 const request = require('request')
 const createQuery = require('./../../services/constants/URLs')
+const axios = require('axios')
 
-const getCommands = (req) => {
+const getCommands = async (req) => {
 
     const textBody = 'На данный момент я знаю следующие джуси команды: ' +
         '\n 😾 | - джуси ' +
@@ -20,6 +21,7 @@ const getCommands = (req) => {
     }
 
     const respectQuery = createQuery('messages.send', reqBody)
+    await axios.get(respectQuery).then((res) => console.log(res.body))
 
     request(respectQuery, async (err, response, body) => {
         if (err) {
