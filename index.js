@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const exphbs = require('express-handlebars')
 const mainPage = require('./routes/index')
 const cookieParser = require('cookie-parser');
-const keys = require('./keys/keys')
+const keys = require('./keys/keys.prod')
 require('dotenv').config()
 
 const PORT = keys.PORT || 3000

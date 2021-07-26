@@ -1,5 +1,5 @@
 const queryString = require('query-string');
-const keys = require('./../../keys/keys')
+const keys = require('../../keys/keys.prod')
 
 const createQuery = (method, query) => {
     const queryParams = queryString.stringify(query);
