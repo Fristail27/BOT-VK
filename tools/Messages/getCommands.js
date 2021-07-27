@@ -1,6 +1,5 @@
 const request = require('request')
 const createQuery = require('./../../services/constants/URLs')
-const axios = require('axios')
 
 const getCommands = async (req) => {
 
@@ -11,7 +10,9 @@ const getCommands = async (req) => {
         '\n 👏 | - джуси уважение' +
         '\n 🍻 | - джуси тост' +
         '\n 📱 | - джуси онлайн' +
-        '\n 🔪 | - убить'
+        '\n 🔪 | - убить' +
+        '\n 🤗 | - обянть' +
+        '\n 😘 | - поцеловать'
 
     const reqBody = {
         message: textBody,

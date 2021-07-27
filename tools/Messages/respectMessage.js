@@ -6,10 +6,16 @@ const respectMessage = async (req, res) => {
 
     const respectQuery = createQuery('users.get', {user_ids: req.body.object.message.reply_message.from_id})
 
-    await request(respectQuery, async (err, response, body) => {
+    request(respectQuery, async (err, response, body) => {
             if (err) {
                 console.log('error', err)
             }
+            const getChatUrl = createQuery('messages.getConversationsById', {peer_ids: 2})
+        request(getChatUrl, async (err, response, body) => {
+            if (err) {
+                console.log('error', err)
+            }
+        })
             const userName = `${JSON.parse(response.body).response[0].first_name} ${JSON.parse(response.body).response[0].last_name}`
 
             const reqBodyMes = {

@@ -21,10 +21,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use(mainPage)
-
+//
 async function start () {
     try {
-        await mongoose.connect(`mongodb+srv://Fristail27:${keys.MONGO_DB_PASSWORD}@cluster0.rkdll.mongodb.net/data`, {
+        await mongoose.connect(process.env.MONGO_DB_URL, {
             useNewUrlParser: true,
             useFindAndModify: false
         })

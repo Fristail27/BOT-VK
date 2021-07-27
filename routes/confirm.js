@@ -7,6 +7,7 @@ const getOnlineUsers = require('../tools/Messages/getOnlineUsers.js')
 const getCommands = require('../tools/Messages/getCommands.js')
 const sampleAnswerMessage = require('../tools/Messages/sampleAnswerMessage.js')
 const killMessage = require('../tools/Messages/killMessage.js')
+const twoNameActionCreator = require('./../services/messageCreators/twoNameActionCreator')
 
 
 async function confirm(req, res, next) {
@@ -15,7 +16,7 @@ async function confirm(req, res, next) {
             Bot.confirm(res);
             break;
         case 'message_new':
-            // console.log(req.body.object.message)
+            // console.log(req.body.object)
             if (req.body.object.message.text.toUpperCase().trim() === "ДЖУСИ ПРИВЕТ") {
                 helloMessage(req, res);
                 Bot.send200(res);
@@ -35,9 +36,15 @@ async function confirm(req, res, next) {
                 getCommands(req)
                 Bot.send200(res);
             } else if (req.body.object.message.text.toUpperCase().trim() === "УБИТЬ") {
-                killMessage(req)
+                twoNameActionCreator(req, "вы убили" ,"вы выпилились, вы молодец!", "🔪", "👍")
                 Bot.send200(res);
-            }else {
+            } else if (req.body.object.message.text.toUpperCase().trim() === "ОБНЯТЬ") {
+                twoNameActionCreator(req, "вы обняли" ,"зачем обнимать себя?!", "🤗", "😦")
+                Bot.send200(res);
+            } else if (req.body.object.message.text.toUpperCase().trim() === "ПОЦЕЛОВАТЬ") {
+                twoNameActionCreator(req, "вы поцеловали" ,"кхммм?!", "😘", "🤬")
+                Bot.send200(res);
+            } else {
                 if (req.body.object.message.text.toUpperCase().includes("ДЖУСИ")) {
                     sampleAnswerMessage(req, `😭 | такой джуси команды пока нет`)
                 }

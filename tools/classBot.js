@@ -1,4 +1,4 @@
-const keys = require('../keys/keys.prod')
+const keys = require('../keys/keys.prod.js')
 
 class Bot {
     constructor(text) {
@@ -6,6 +6,7 @@ class Bot {
     }
 
     static confirm (res) {
+        console.log(keys)
         res.send(keys.CONFIRM)
     }
     static send200 (res) {
