@@ -4,5 +4,5 @@ module.exports = {
     VER: process.env.VER,
     TOKEN: process.env.TOKEN,
     BASE_URL: process.env.BASE_URL,
-    MONGO_DB_URL: process.env.MONGO_DB_PASSWORD
+    MONGO_DB_URL: process.env.MONGO_DB_URL
 }
