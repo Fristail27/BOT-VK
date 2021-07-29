@@ -11,7 +11,7 @@ const respectMessage = async (req, res) => {
                 console.log('error', err)
             }
             const getChatUrl = createQuery('messages.getConversationsById', {peer_ids: 2})
-        request(getChatUrl, async (err, response, body) => {
+        request(getChatUrl, async (err, re, body) => {
             if (err) {
                 console.log('error', err)
             }
