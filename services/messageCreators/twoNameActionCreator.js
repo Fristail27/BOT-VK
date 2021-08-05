@@ -5,7 +5,7 @@ const twoNameActionCreator = (req, actionTextForOther, actionTextForHimself, act
 
     const respectQuery = createQuery('users.get', {
         user_ids: req.body.object.message.reply_message.from_id,
-        name_case: 'gen',
+        name_case: 'acc',
         fields: 'sex'
     })
 

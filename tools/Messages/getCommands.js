@@ -12,7 +12,8 @@ const getCommands = async (req) => {
         '\n 📱 | - джуси онлайн' +
         '\n 🔪 | - убить' +
         '\n 🤗 | - обнять' +
-        '\n 😘 | - поцеловать'
+        '\n 😘 | - поцеловать' +
+        '\n 🌽 | - покормить'
 
     const reqBody = {
         message: textBody,

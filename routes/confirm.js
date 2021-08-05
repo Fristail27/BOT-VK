@@ -44,6 +44,9 @@ async function confirm(req, res, next) {
             } else if (req.body.object.message.text.toUpperCase().trim() === "ПОЦЕЛОВАТЬ") {
                 twoNameActionCreator(req, "вы поцеловали" ,"кхммм?!", "😘", "🤬")
                 Bot.send200(res);
+            } else if (req.body.object.message.text.toUpperCase().trim() === "ПОКОРМИТЬ") {
+                twoNameActionCreator(req, "вы покормили" ,"вкусно?", "🍔", "🍉")
+                Bot.send200(res);
             } else {
                 if (req.body.object.message.text.toUpperCase().includes("ДЖУСИ")) {
                     sampleAnswerMessage(req, `😭 | такой джуси команды пока нет`)
