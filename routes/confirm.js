@@ -8,6 +8,7 @@ const getCommands = require('../tools/Messages/getCommands.js')
 const sampleAnswerMessage = require('../tools/Messages/sampleAnswerMessage.js')
 const killMessage = require('../tools/Messages/killMessage.js')
 const twoNameActionCreator = require('./../services/messageCreators/twoNameActionCreator')
+const getQuote = require("../tools/Messages/getQuote");
 
 
 async function confirm(req, res, next) {
@@ -28,6 +29,9 @@ async function confirm(req, res, next) {
                 Bot.send200(res);
             } else if (req.body.object.message.text.toUpperCase().trim() === "ДЖУСИ ТОСТ") {
                 getTost(req, res)
+                Bot.send200(res);
+            } else if (req.body.object.message.text.toUpperCase().trim() === "ДЖУСИ ЦИТАТА") {
+                getQuote(req, res)
                 Bot.send200(res);
             } else if (req.body.object.message.text.toUpperCase().trim() === "ДЖУСИ ОНЛАЙН") {
                 getOnlineUsers(req)
