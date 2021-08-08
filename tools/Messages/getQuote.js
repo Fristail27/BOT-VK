@@ -18,12 +18,14 @@ const getQuote = async (req, res) => {
             const quoteSourcePartEnd = quoteSourcePartStart + 600 // хардкод что бы гарантированно захватить небходимый участок кода с информацией
             const quoteSourcePart = xmlBody.slice(quoteSourcePartStart, quoteSourcePartEnd)
 
+            const noQuoteSourse = quoteSourcePart.indexOf('title=\"') === -1
+
             const quoteSourceStart = quoteSourcePart.indexOf('title=\"')
             const quoteSourceEnd = quoteSourcePart.indexOf('</a>')
             const quoteSource = quoteSourcePart.slice(quoteSourceStart + 7, quoteSourceEnd).replace('">', " ")
 
             const reqBody = {
-                message: `☝ ${quote} \n ${quoteSource}`,
+                message: `☝ ${quote} \n ${!noQuoteSourse ? quoteSource : ''}`,
                 peer_id: req.body.object.message.peer_id,
                 group_id: req.body.group_id,
                 random_id: req.body.object.message.random_id
