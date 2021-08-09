@@ -19,8 +19,18 @@ const respectMessage = async (req, res) => {
                 group_id: req.body.group_id,
                 random_id: req.body.object.message.random_id
             }
-
-            const respectQueryMes = createQuery('messages.send', reqBodyMes)
+            let respectQueryMes
+        if (JSON.parse(response.body).response[0].id === 138167009 ) {
+            const reqBodyMesForVladka = {
+                message: `👍  Владе сразу +10 уважения`,
+                peer_id: req.body.object.message.peer_id,
+                group_id: req.body.group_id,
+                random_id: req.body.object.message.random_id
+            }
+            respectQueryMes = createQuery('messages.send', reqBodyMesForVladka)
+        } else {
+            respectQueryMes = createQuery('messages.send', reqBodyMes)
+        }
 
             request(respectQueryMes, async (err, resp, body) => {
                     if (err) {
@@ -29,8 +39,13 @@ const respectMessage = async (req, res) => {
                     const user = await User.findOne({Id: req.body.object.message.reply_message.from_id})
 
                     if (user) {
-                        user.reputation = +user.reputation + 1;
-                        user.save()
+                        if (user.Id === '138167009') {
+                            user.reputation = +user.reputation + 10;
+                            user.save()
+                        } else {
+                            user.reputation = +user.reputation + 1;
+                            user.save()
+                        }
                     } else {
                         const newUser = new User({
                             Id: req.body.object.message.reply_message.from_id,
