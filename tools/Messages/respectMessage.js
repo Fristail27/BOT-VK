@@ -37,7 +37,7 @@ const respectMessage = async (req, res) => {
                         user.reputation = +user.reputation + 1;
                         user.save()
                     } else {
-                        const newUвser = new User({
+                        const newUser = new User({
                             Id: req.body.object.message.reply_message.from_id,
                             first_name: JSON.parse(response.body).response[0].first_name,
                             last_name: JSON.parse(response.body).response[0].last_name,
