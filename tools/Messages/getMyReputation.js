@@ -11,7 +11,8 @@ const getMyReputation = async (req, res) => {
         const userName = `${user.first_name} ${user.last_name}`
 
         const reqBody = {
-            message: `🤘 ${userName} твое уважение - ${user.reputation}`,
+            message: `🤘 ${userName} твое уважение - ${user.reputation} \n 
+                        🍕 ${user.feedCount ? `тебя покормили - ${user.feedCount} раз` : "тебя еще ни разу не покормили"}`,
             peer_id: req.body.object.message.peer_id,
             group_id: req.body.group_id,
             random_id: req.body.object.message.random_id

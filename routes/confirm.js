@@ -9,6 +9,7 @@ const sampleAnswerMessage = require('../tools/Messages/sampleAnswerMessage.js')
 const killMessage = require('../tools/Messages/killMessage.js')
 const twoNameActionCreator = require('./../services/messageCreators/twoNameActionCreator')
 const getQuote = require("../tools/Messages/getQuote");
+const feedMessage = require("../tools/Messages/feedMessage");
 
 
 async function confirm(req, res, next) {
@@ -49,7 +50,7 @@ async function confirm(req, res, next) {
                 twoNameActionCreator(req, "вы поцеловали" ,"кхммм?!", "😘", "🤬")
                 Bot.send200(res);
             } else if (req.body.object.message.text.toUpperCase().trim() === "ПОКОРМИТЬ") {
-                twoNameActionCreator(req, "вы покормили" ,"вкусно?", "🍔", "🍉")
+                feedMessage(req, res)
                 Bot.send200(res);
             } else {
                 if (req.body.object.message.text.toUpperCase().includes("ДЖУСИ")) {

@@ -16,6 +16,10 @@ const userModel = new Schema({
     reputation: {
         type: Number,
         required: true
+    },
+    feedCount: {
+        type: Number,
+        required: true
     }
 })
 
