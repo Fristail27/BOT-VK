@@ -10,6 +10,7 @@ const killMessage = require('../tools/Messages/killMessage.js')
 const twoNameActionCreator = require('./../services/messageCreators/twoNameActionCreator')
 const getQuote = require("../tools/Messages/getQuote");
 const feedMessage = require("../tools/Messages/feedMessage");
+const myauMessage = require("../tools/Messages/myauMessage");
 
 
 async function confirm(req, res, next) {
@@ -51,6 +52,9 @@ async function confirm(req, res, next) {
                 Bot.send200(res);
             } else if (req.body.object.message.text.toUpperCase().trim() === "ПОКОРМИТЬ") {
                 feedMessage(req, res)
+                Bot.send200(res);
+            } else if (req.body.object.message.text.toUpperCase().trim() === "ДЖУСИ МЯУ" || req.body.object.message.text.toUpperCase().trim() === "МЯУ") {
+                myauMessage(req, res);
                 Bot.send200(res);
             } else {
                 if (req.body.object.message.text.toUpperCase().includes("ДЖУСИ")) {
