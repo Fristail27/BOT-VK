@@ -15,7 +15,7 @@ const getCommands = async (req) => {
         '\n 😘 | - поцеловать' +
         '\n 🌽 | - покормить' +
         '\n ☝ | - джуси цитата' +
-        '\n 🐈 | - дужси мяу, мяу'
+        '\n 🐈 | - джуси мяу, мяу'
 
     const reqBody = {
         message: textBody,
