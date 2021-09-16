@@ -47,7 +47,7 @@ async function confirm(req, res, next) {
             } else if (req.body.object.message.text.toUpperCase().trim() === "ОБНЯТЬ") {
                 twoNameActionCreator(req, "вы обняли" ,"зачем обнимать себя?!", "🤗", "😦")
                 Bot.send200(res);
-            }else if (req.body.object.message.text.toUpperCase().trim() === "СЖЕЧЬ") {
+            } else if (req.body.object.message.text.toUpperCase().trim() === "СЖЕЧЬ") {
                 twoNameActionCreator(req, "вы сожгли" ,"вы подожгли себя", "🔥", "🔥")
                 Bot.send200(res);
             } else if (req.body.object.message.text.toUpperCase().trim() === "ПОЦЕЛОВАТЬ") {
