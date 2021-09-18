@@ -16,19 +16,11 @@ function getRandomArrayElement(arr){
 
 const randomPhraseCreator = (arrayNouns, arrayAdjectives, arrayOfParticiple) => {
     try {
-        const randomNum1 = (Math.floor(Math.random() * 100))
-        const randomNum2 = (Math.floor(Math.random() * 100))
-        const randomNum3 = (Math.floor(Math.random() * 100))
-
         const noun = getRandomArrayElement(arrayNouns)
 
         const adjective = getRandomArrayElement(arrayAdjectives)[noun.type]
 
         const participle = participleCreator(noun.type, getRandomArrayElement(arrayOfParticiple))
-
-        // if (!participle || !adjective || !noun.word) {
-        //     return  randomPhraseCreator(arrayNouns, arrayAdjectives, arrayOfParticiple)
-        // }
 
         return `${participle} ${adjective} ${noun.word}`
     } catch (err) {
