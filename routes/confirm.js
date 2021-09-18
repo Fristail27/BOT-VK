@@ -11,6 +11,7 @@ const twoNameActionCreator = require('./../services/messageCreators/twoNameActio
 const getQuote = require("../tools/Messages/getQuote");
 const feedMessage = require("../tools/Messages/feedMessage");
 const myauMessage = require("../tools/Messages/myauMessage");
+const whoAreIMessage = require("../tools/Messages/whoAreIMessage");
 
 
 async function confirm(req, res, next) {
@@ -55,6 +56,9 @@ async function confirm(req, res, next) {
                 Bot.send200(res);
             } else if (req.body.object.message.text.toUpperCase().trim() === "ПОКОРМИТЬ") {
                 feedMessage(req, res)
+                Bot.send200(res);
+            } else if (req.body.object.message.text.toUpperCase().trim().includes('КТО Я')) {
+                whoAreIMessage(req, res);
                 Bot.send200(res);
             } else if (req.body.object.message.text.toUpperCase().trim() === "ДЖУСИ МЯУ" || req.body.object.message.text.toUpperCase().trim() === "МЯУ") {
                 myauMessage(req, res);
